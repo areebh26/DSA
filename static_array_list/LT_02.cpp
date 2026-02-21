@@ -172,6 +172,63 @@ class ArrayList{
 
              }
         }
+        void deleteFromEndOfList(){
+            if(size==0){
+                cout << "list is already empty" ; 
+            }else{
+                size--;
+            }
+
+        }
+        void deleteFromStartOfList(){
+             if(size==0){
+                cout << "list is already empty" ; 
+            }else if(size==total_capacity){
+                int* array2 = new int[total_capacity*2];
+                total_capacity*=2;
+                for(int i = 0 ; i < this->size;i++){
+                    array2[i]=this->array[i];
+                }
+                
+                array=array2;
+                 array[size]=array[0];
+                for (int i = 0 ; i < size ; i++){
+                    array[i]=array[i+1];
+                }
+                size--;
+                
+                
+            }
+            else{
+                
+                array[size]=array[0];
+                for (int i = 0 ; i < size ; i++){
+                    array[i]=array[i+1];
+                }
+                size--;
+                
+            }
+        }
+        void deleteSpecificValue(int value){
+            int index = returnIndex(value);
+            if(index== -1){
+                cout << "The value u want to delete is not present in the list ";
+             }
+            else{
+                    int* array2 = new int[total_capacity];
+                    for(int i = 0 ; i < index;i++){
+                    array2[i]=this->array[i];
+                    }
+                
+                    for(int i = index ; i < size ; i++){
+                        array2[i]=array[i+1];
+                    }
+                    array=array2;
+                    size--;
+            }
+        }
+
+
         int returnIndex(int value){
 
                 for (int i = 0 ; i < this->size ; i ++) {
@@ -191,31 +248,20 @@ class ArrayList{
         }
 };
 int main(){
-    ArrayList list = ArrayList();
-    list.insertValueAtTheEndOfList(55);
-    list.insertValueAtTheEndOfList(2);
-    list.insertValueAtTheEndOfList(2);
-
-    list.insertValueAtTheEndOfList(435);
-    list.insertValueAtTheEndOfList(343);
-    list.insertValueAtTheEndOfList(5);
-    list.insertValueAtTheEndOfList(21);
-    list.insertValueAtTheEndOfList(254);
-    list.insertValueAtTheEndOfList(20);
-    list.insertValueAtTheEndOfList(244);
-    list.insertValueAtTheEndOfList(211);
-    list.insertValueAtTheEndOfList(2000);
-    list.insertValueAtTheEndOfList(2112);
+    
+   
+    
    
    
-    list.insertValueBeforeSpecificValue(2112,1);
+    
+   
     
 
    
 
    
    
-    list.display();
+    return 0;
 
 }
     
