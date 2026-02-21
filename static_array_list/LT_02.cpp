@@ -44,6 +44,33 @@ class ArrayList{
             }
 
         }
+        void insertValueAtTheStartOfList(int num){
+            if(size==0){
+                array[0]=num;
+                size++;
+            }
+            else if(size==total_capacity){
+                int* array2 = new int[total_capacity*2];
+                total_capacity*=2;
+                array2[0] = num;
+                for(int i = 0 ; i < this->size;i++){
+                    array2[i+1]=this->array[i];
+                }
+                
+                array=array2;
+                size++;
+                
+            }else{
+                int* array2 = new int[total_capacity];
+                array2[0] = num;
+                for(int i = 0 ; i < this->size;i++){
+                    array2[i+1]=this->array[i];
+                }
+                array=array2;
+                size++;
+             }
+
+        }
         void display(){
             cout << "{ ";
             for (int i = 0 ; i < this->size ; i++){
@@ -58,17 +85,7 @@ int main(){
     list.insertValueAtTheEndOfList(99);
     list.insertValueAtTheEndOfList(65);
     list.insertValueAtTheEndOfList(22);
-    list.insertValueAtTheEndOfList(23);
-    list.insertValueAtTheEndOfList(67);
-    list.insertValueAtTheEndOfList(69);
-    list.insertValueAtTheEndOfList(45);
-    list.insertValueAtTheEndOfList(21);
-    list.insertValueAtTheEndOfList(99);
-    list.insertValueAtTheEndOfList(100);
-     list.insertValueAtTheEndOfList(100);
-      list.insertValueAtTheEndOfList(100);
-       list.insertValueAtTheEndOfList(100);
-        list.insertValueAtTheEndOfList(100);
+    list.insertValueAtTheStartOfList(1);
    
    
     list.display();
