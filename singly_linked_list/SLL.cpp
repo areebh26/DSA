@@ -28,6 +28,17 @@ class LinkedList{
              tail=newNode;
         }
     }
+    void insertAtStart(int num){
+         if(this->head==nullptr){
+            Node* newNode = new Node(num);
+            head=tail=newNode;
+        }
+        else{
+                Node* newNode = new Node(num);
+                newNode->next=head;
+                head=newNode;
+        }
+    }
     void display(){
         Node* temp = head;
         
@@ -45,5 +56,6 @@ int main(){
     list.insertAtEnd(2);
     list.insertAtEnd(3);
     list.insertAtEnd(4);
+    list.insertAtStart(0);
     list.display();
 }
