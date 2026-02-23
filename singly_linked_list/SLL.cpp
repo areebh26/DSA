@@ -42,6 +42,44 @@ class LinkedList{
                 head=newNode;
         }
     }
+    void insertAfterSpecifiedValue (int num){
+            if(this->head==nullptr){
+            cout << "list is empty";
+
+        }else{
+             Node* temp = head;
+             Node* tempSecond = head;
+             bool isFound=false;
+             while(temp!=nullptr){
+
+                if(temp->data==num){
+                    isFound=true;
+                    if(temp==head){
+                        Node* newNode = new Node(num);
+                        Node* temp=head->next;
+                        head->next=newNode;
+                        newNode->next=temp;
+                    }
+                    else if(temp==tail){
+                        insertAtEnd(num);
+                    }
+                    else{
+                        Node* newNode = new Node(num);
+                        Node* anotherTemp = temp->next;
+                        temp->next=newNode;
+                        newNode->next=anotherTemp;
+                    }
+                }
+                tempSecond=temp;
+                temp=temp->next;
+            }
+            if(!isFound){
+                cout << "Node given by user is not found";
+            }
+        }
+    }
+        
+    
     void deleteFirstNode(){
         if(this->head==nullptr){
            cout << "list is empty";
@@ -76,8 +114,11 @@ class LinkedList{
         }else{
              Node* temp = head;
              Node* tempSecond = head;
+             bool isFound=false;
              while(temp!=nullptr){
+
                 if(temp->data==num){
+                    isFound=true;
                     if(temp==head){
                         deleteFirstNode();
                     }
@@ -87,10 +128,13 @@ class LinkedList{
                     else{
                         tempSecond->next=temp->next;
                     }
+                }
+                tempSecond=temp;
+                temp=temp->next;
             }
-            tempSecond=temp;
-            temp=temp->next;
-        }
+            if(!isFound){
+                cout << "Node given by user is not found";
+            }
         }
        
     }
@@ -153,8 +197,8 @@ int main(){
     list.insertAtEnd(4);
     list.insertAtEnd(5);
     list.insertAtEnd(6);
-    list.deleteNodeGivenByUser(2);
-    list.deleteList();
+    list.deleteNodeGivenByUser(100);
+    
     
    
     // list.deleteFirstNode();
