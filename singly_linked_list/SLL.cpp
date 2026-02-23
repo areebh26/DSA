@@ -42,7 +42,7 @@ class LinkedList{
                 head=newNode;
         }
     }
-    void insertAfterSpecifiedValue (int num){
+    void insertAfterSpecifiedValue (int num , int toAdd ){
             if(this->head==nullptr){
             cout << "list is empty";
 
@@ -55,19 +55,57 @@ class LinkedList{
                 if(temp->data==num){
                     isFound=true;
                     if(temp==head){
-                        Node* newNode = new Node(num);
+                        Node* newNode = new Node(toAdd);
                         Node* temp=head->next;
                         head->next=newNode;
                         newNode->next=temp;
                     }
                     else if(temp==tail){
-                        insertAtEnd(num);
+                        insertAtEnd(toAdd);
                     }
                     else{
-                        Node* newNode = new Node(num);
+                        Node* newNode = new Node(toAdd);
                         Node* anotherTemp = temp->next;
                         temp->next=newNode;
                         newNode->next=anotherTemp;
+                    }
+                }
+                tempSecond=temp;
+                temp=temp->next;
+            }
+            if(!isFound){
+                cout << "Node given by user is not found";
+            }
+        }
+    }
+     void insertBeforeSpecifiedValue (int num , int toAdd ){
+            if(this->head==nullptr){
+            cout << "list is empty";
+
+        }else{
+             Node* temp = head;
+             Node* tempSecond = head;
+             bool isFound=false;
+             while(temp!=nullptr){
+
+                if(temp->data==num){
+                    isFound=true;
+                    if(temp==head){
+                        insertAtStart(toAdd);
+                        Node* newNode = new Node(toAdd);
+                        
+                    }
+                    else if(temp==tail){
+                         Node* newNode = new Node(toAdd);
+                         tempSecond->next=newNode;
+                         newNode->next=tail;
+                        }
+                    else{
+                        Node* newNode = new Node(toAdd);
+                        tempSecond->next=newNode;
+                        newNode->next=temp;
+
+                        
                     }
                 }
                 tempSecond=temp;
@@ -187,6 +225,7 @@ class LinkedList{
         }
         cout << "NULL  ";
     }
+    
 
 };
 int main(){
@@ -197,13 +236,6 @@ int main(){
     list.insertAtEnd(4);
     list.insertAtEnd(5);
     list.insertAtEnd(6);
-    list.deleteNodeGivenByUser(100);
-    
-    
-   
-    // list.deleteFirstNode();
-    // list.deleteFirstNode();
-    // cout << list.length();
-    // list.search(0);
+    list.insertBeforeSpecifiedValue(3,100);
     list.display();
 }
