@@ -1,0 +1,2 @@
+list.deleteFirstNode();
+    // list.deleteFirstNode();
