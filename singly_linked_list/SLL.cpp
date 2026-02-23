@@ -231,6 +231,17 @@ class LinkedList{
         return list;
 
     }
+    int occurences(int element){
+        Node* temp = head;
+        int occurences=0;
+        while(temp!=nullptr){
+            if(temp->data==element){
+                occurences++;
+            }
+            temp=temp->next;
+        }
+        return occurences;
+    }
     void display(){
         Node* temp = head;
         
@@ -263,6 +274,7 @@ int main(){
     list.insertAtEnd(3);
     LinkedList myList = LinkedList::merge(list,list2);
     myList.display();
+    cout << myList.occurences(5);
     
    
     
