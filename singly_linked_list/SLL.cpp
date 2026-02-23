@@ -216,6 +216,21 @@ class LinkedList{
         }
         return count;
     }
+    static LinkedList merge(LinkedList l1 , LinkedList l2){
+        LinkedList list = LinkedList();
+        Node* temp = l1.head;
+        while(temp!=nullptr){
+            list.insertAtEnd(temp->data);
+            temp=temp->next;
+        }
+        Node* anotherTemp = l2.head;
+         while(anotherTemp!=nullptr){
+            list.insertAtEnd(anotherTemp->data);
+            anotherTemp=anotherTemp->next;
+        }
+        return list;
+
+    }
     void display(){
         Node* temp = head;
         
@@ -242,10 +257,13 @@ int main(){
     list.insertAtEnd(1);
     list.insertAtEnd(2);
     list.insertAtEnd(3);
-    list.insertAtEnd(4);
-    list.insertAtEnd(5);
-    list.insertAtEnd(6);
-    list.insertBeforeSpecifiedValue(3,100);
-    list.display();
-    list.displayReverse();
+    LinkedList list2 = LinkedList();
+    list.insertAtEnd(1);
+    list.insertAtEnd(2);
+    list.insertAtEnd(3);
+    LinkedList myList = LinkedList::merge(list,list2);
+    myList.display();
+    
+   
+    
 }
