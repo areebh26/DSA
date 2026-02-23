@@ -225,7 +225,16 @@ class LinkedList{
         }
         cout << "NULL  ";
     }
-    
+    void displayReverse(){
+        Node* temp = head;
+        LinkedList list = LinkedList();
+
+        while(temp!=nullptr){
+            list.insertAtStart(temp->data);
+            temp=temp->next;
+        }
+        list.display();
+    }
 
 };
 int main(){
@@ -238,4 +247,5 @@ int main(){
     list.insertAtEnd(6);
     list.insertBeforeSpecifiedValue(3,100);
     list.display();
+    list.displayReverse();
 }
