@@ -10,6 +10,9 @@ class Node{
         this->data=data;
         this->next=nullptr;
     }
+    void display(){
+        cout << this->data;
+    }
 };
 class LinkedList{
     public : 
@@ -39,6 +42,47 @@ class LinkedList{
                 head=newNode;
         }
     }
+    void deleteFirstNode(){
+        if(this->head==nullptr){
+           cout << "list is empty";
+        }
+        else{
+            Node* temp=head;
+            head=head->next;
+            // temp->next=nullptr;
+            delete temp;
+            }
+    }
+    void search(int key){
+        if(key>length() || key < 0){
+            cout << "no node at this position";
+        }
+        else{
+            Node* temp = head;
+            int count=0;
+            Node* secondTemp;
+        
+            while(temp!=nullptr){
+                if(count==key){
+                    secondTemp=temp;
+                    break;
+                }
+                temp=temp->next;
+                count++;
+            }
+            cout << "The data at " << key << " index is : " << secondTemp->data ;
+        }
+    }
+    int length(){
+        Node* temp = head;
+        int count=0;
+        
+        while(temp!=nullptr){
+            temp=temp->next;
+            count++; 
+        }
+        return count;
+    }
     void display(){
         Node* temp = head;
         
@@ -57,5 +101,9 @@ int main(){
     list.insertAtEnd(3);
     list.insertAtEnd(4);
     list.insertAtStart(0);
+    list.deleteFirstNode();
+    list.deleteFirstNode();
+    // cout << list.length();
+    // list.search(0);
     list.display();
 }
