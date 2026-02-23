@@ -49,8 +49,8 @@ class LinkedList{
         else{
             Node* temp=head;
             head=head->next;
-            // temp->next=nullptr;
-            delete temp;
+            temp->next=nullptr;
+            // delete temp;
             }
     }
     void deleteLastNode(){
@@ -68,6 +68,41 @@ class LinkedList{
             }
             
         }
+    }
+    void deleteNodeGivenByUser(int num){
+        if(this->head==nullptr){
+            cout << "list is empty";
+
+        }else{
+             Node* temp = head;
+             Node* tempSecond = head;
+             while(temp!=nullptr){
+                if(temp->data==num){
+                    if(temp==head){
+                        deleteFirstNode();
+                    }
+                    else if(temp==tail){
+                        deleteLastNode();
+                    }
+                    else{
+                        tempSecond->next=temp->next;
+                    }
+            }
+            tempSecond=temp;
+            temp=temp->next;
+        }
+        }
+       
+    }
+    void deleteList(){
+        Node* temp = head;
+        while(temp!=nullptr){
+            Node* secondTemp = temp;
+            temp=temp->next;
+            delete secondTemp;
+        }
+        this->head=nullptr;
+        this->tail=nullptr;
     }
     void search(int key){
         if(key>length() || key < 0){
@@ -116,9 +151,12 @@ int main(){
     list.insertAtEnd(2);
     list.insertAtEnd(3);
     list.insertAtEnd(4);
-    list.insertAtStart(0);
-    list.deleteLastNode();
-     list.deleteLastNode();
+    list.insertAtEnd(5);
+    list.insertAtEnd(6);
+    list.deleteNodeGivenByUser(2);
+    list.deleteList();
+    
+   
     // list.deleteFirstNode();
     // list.deleteFirstNode();
     // cout << list.length();
