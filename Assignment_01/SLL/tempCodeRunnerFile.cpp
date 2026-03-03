@@ -1,1 +1,1 @@
- // myList.insertAtEnd("aurangzeb");
+cout<<head->log<<"=>NULL";
