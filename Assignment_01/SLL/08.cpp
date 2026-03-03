@@ -2,10 +2,10 @@
 using namespace std;
 class Node{
     public : 
-    string contact;
+    string stamp;
     Node* next;
     Node(string data){
-        this->contact=data;
+        this->stamp=data;
         this->next=NULL;
     }
 };
@@ -16,12 +16,12 @@ class List{
     List(){
         this->head=this->tail=NULL;
     }
-    void insertAtEnd(string contact){
+    void insertAtEnd(string stamp){
         if(this->head==nullptr){
-            Node* newNode = new Node(contact);
+            Node* newNode = new Node(stamp);
             head=tail=newNode;
         }else{
-             Node* newNode = new Node(contact);
+             Node* newNode = new Node(stamp);
              tail->next=newNode;
              tail=newNode;
         }
@@ -29,7 +29,7 @@ class List{
     void display(){
         Node*temp = head;
         while(temp!=NULL){
-            cout << temp->contact << "=>";
+            cout << temp->stamp << "=>";
             temp=temp->next;
         }
         cout << "NULL" ; 
@@ -42,7 +42,7 @@ class List{
             
             while(secondTemp!=NULL){
                
-                if(temp->contact==secondTemp->contact){
+                if(temp->stamp==secondTemp->stamp){
                     if(secondTemp==tail){
                         tail=previousOfSecondTemp;
                     }
