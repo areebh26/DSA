@@ -134,14 +134,17 @@ class LinkedList{
            cout << "list is empty";
         }else{
             Node*temp = head;
-            while(temp!=nullptr){
+            Node* atemp = NULL; 
+            while(temp->next!=nullptr){
                 if(temp->next==tail){
                     tail=temp;
                     temp->next=nullptr;
                     break;
                 }
+                atemp = temp;
                 temp=temp->next;
             }
+            
             
         }
     }
@@ -261,6 +264,7 @@ class LinkedList{
         }
         list.display();
     }
+    
 
 };
 int main(){
@@ -274,7 +278,8 @@ int main(){
     list.insertAtEnd(3);
     LinkedList myList = LinkedList::merge(list,list2);
     myList.display();
-    cout << myList.occurences(5);
+    myList.deleteLastNode();
+    myList.display();
     
    
     
